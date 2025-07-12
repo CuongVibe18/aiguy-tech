@@ -2,6 +2,7 @@ import { aiTools, aiToolCategories } from '@/data/aiTools';
 import { Header } from '@/components/Header';
 import { Hero } from '@/components/Hero';
 import { CategorySection } from '@/components/CategorySection';
+import { ToolsSummaryCard } from '@/components/ToolsSummaryCard';
 
 const Index = () => {
   // Group tools by category
@@ -16,6 +17,8 @@ const Index = () => {
       <Hero />
       
       <main className="container mx-auto px-4 py-16 space-y-20" id="categories">
+        <ToolsSummaryCard />
+        
         {aiToolCategories.map(category => (
           <CategorySection 
             key={category.id}
