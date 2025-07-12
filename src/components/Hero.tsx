@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { ArrowDown, Sparkles, TrendingUp } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export function Hero() {
   const scrollToCategories = () => {
@@ -52,13 +53,15 @@ export function Hero() {
               Xem bảng xếp hạng
             </Button>
             
-            <Button 
-              variant="secondary" 
-              size="lg"
-              className="bg-accent/20 hover:bg-accent/30 text-accent-foreground border border-accent/30"
-            >
-              Khám phá toàn bộ công cụ AI hữu ích
-            </Button>
+            <Link to="/all-tools">
+              <Button 
+                variant="secondary" 
+                size="lg"
+                className="bg-accent/20 hover:bg-accent/30 text-accent-foreground border border-accent/30"
+              >
+                Khám phá toàn bộ công cụ AI hữu ích
+              </Button>
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
