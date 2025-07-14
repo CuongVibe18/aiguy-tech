@@ -6,6 +6,7 @@ import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import * as Icons from 'lucide-react';
 import { LucideIcon } from 'lucide-react';
+import { useState } from 'react';
 
 const AllTools = () => {
   // Group tools by category
@@ -13,6 +14,8 @@ const AllTools = () => {
     acc[category.id] = aiTools.filter(tool => tool.category === category.id);
     return acc;
   }, {} as Record<string, typeof aiTools>);
+
+  const [selectedCategory, setSelectedCategory] = useState(aiToolCategories[0]?.id || '');
 
   return (
     <div className="min-h-screen bg-gradient-background">
@@ -37,15 +40,37 @@ const AllTools = () => {
           </div>
         </div>
 
-        <main className="space-y-16">
+        {/* Category Buttons */}
+        <div className="flex flex-wrap gap-2 mb-8">
           {aiToolCategories.map(category => {
-            const tools = groupedTools[category.id] || [];
-            if (tools.length === 0) return null;
+            const IconComponent = Icons[category.icon as keyof typeof Icons] as LucideIcon;
+            const isActive = selectedCategory === category.id;
+            
+            return (
+              <Button
+                key={category.id}
+                onClick={() => setSelectedCategory(category.id)}
+                variant={isActive ? "default" : "outline"}
+                className="flex items-center gap-2"
+              >
+                <IconComponent className="w-4 h-4" />
+                {category.name}
+              </Button>
+            );
+          })}
+        </div>
+
+        <main>
+          {(() => {
+            const category = aiToolCategories.find(cat => cat.id === selectedCategory);
+            const tools = groupedTools[selectedCategory] || [];
+            
+            if (!category || tools.length === 0) return null;
             
             const IconComponent = Icons[category.icon as keyof typeof Icons] as LucideIcon;
             
             return (
-              <section key={category.id} className="space-y-6">
+              <section className="space-y-6">
                 <div className="flex items-center gap-3">
                   <div className="p-2 rounded-lg bg-gradient-primary">
                     <IconComponent className="w-5 h-5 text-primary-foreground" />
@@ -65,7 +90,7 @@ const AllTools = () => {
                 </div>
               </section>
             );
-          })}
+          })()}
         </main>
       </div>
     </div>
