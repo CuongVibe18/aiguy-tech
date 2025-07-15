@@ -21,7 +21,7 @@ export function AIToolCard({ tool }: AIToolCardProps) {
           <img 
             src={tool.image} 
             alt={tool.name}
-            className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+            className="w-full h-36 sm:h-40 object-cover group-hover:scale-105 transition-transform duration-300"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
           <div className="absolute top-4 right-4 flex items-center gap-1 bg-black/70 backdrop-blur-sm rounded-full px-2 py-1">
