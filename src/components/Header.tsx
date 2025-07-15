@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Bot, Search, Menu } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { SearchDialog } from '@/components/SearchDialog';
 
 export function Header() {
   return (
@@ -23,10 +24,12 @@ export function Header() {
               <span className="w-2 h-2 bg-accent rounded-full mr-2 animate-pulse" />
               100+ Công cụ AI
             </Badge>
-            <Button variant="outline" size="sm">
-              <Search className="w-4 h-4 mr-2" />
-              Tìm kiếm
-            </Button>
+            <SearchDialog>
+              <Button variant="outline" size="sm">
+                <Search className="w-4 h-4 mr-2" />
+                Tìm kiếm
+              </Button>
+            </SearchDialog>
           </div>
 
           <Button variant="ghost" size="sm" className="md:hidden">
