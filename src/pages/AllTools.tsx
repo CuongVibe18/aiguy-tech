@@ -3,11 +3,28 @@ import { Header } from '@/components/Header';
 import { SimpleAIToolCard } from '@/components/SimpleAIToolCard';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowLeft, ExternalLink, User, Search, Calculator, Languages, Presentation } from 'lucide-react';
+import { ArrowLeft, ExternalLink, User, Search, Calculator, Languages, Presentation, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import * as Icons from 'lucide-react';
 import { LucideIcon } from 'lucide-react';
 import { useState } from 'react';
+
+// Import brand logos
+import claudeLogo from '@/assets/claude-logo.png';
+import chatgptLogo from '@/assets/chatgpt-logo.png';
+import perplexityLogo from '@/assets/perplexity-logo.png';
+import consensusLogo from '@/assets/consensus-logo.png';
+import elicitLogo from '@/assets/elicit-logo.png';
+import semanticScholarLogo from '@/assets/semantic-scholar-logo.png';
+import excelFormulaBotLogo from '@/assets/excel-formula-bot-logo.png';
+import airtableLogo from '@/assets/airtable-logo.png';
+import rowsLogo from '@/assets/rows-logo.png';
+import deeplLogo from '@/assets/deepl-logo.png';
+import reversoLogo from '@/assets/reverso-logo.png';
+import lingueeLogo from '@/assets/linguee-logo.png';
+import gammaLogo from '@/assets/gamma-logo.png';
+import tomeLogo from '@/assets/tome-logo.png';
+import beautifulAiLogo from '@/assets/beautiful-ai-logo.png';
 
 const AllTools = () => {
   // Group tools by category
@@ -19,7 +36,25 @@ const AllTools = () => {
   const [selectedCategory, setSelectedCategory] = useState(aiToolCategories[0]?.id || '');
   const [showProductivityDetails, setShowProductivityDetails] = useState(false);
 
-  // Productivity subcategories data
+  // Productivity subcategories data with logo mapping
+  const logoMap = {
+    'claude': claudeLogo,
+    'chatgpt': chatgptLogo,
+    'perplexity': perplexityLogo,
+    'consensus': consensusLogo,
+    'elicit': elicitLogo,
+    'semantic-scholar': semanticScholarLogo,
+    'excel-formula-bot': excelFormulaBotLogo,
+    'airtable-ai': airtableLogo,
+    'rows': rowsLogo,
+    'deepl': deeplLogo,
+    'reverso': reversoLogo,
+    'linguee': lingueeLogo,
+    'gamma': gammaLogo,
+    'tome': tomeLogo,
+    'beautiful-ai': beautifulAiLogo,
+  };
+
   const productivitySubcategories = [
     {
       id: 'personal-assistant',
@@ -31,21 +66,21 @@ const AllTools = () => {
           name: 'Claude',
           description: 'Trợ lý AI thông minh từ Anthropic, hỗ trợ viết lách, phân tích và giải quyết vấn đề',
           website: 'https://claude.ai',
-          logo: '🤖'
+          rating: 5
         },
         {
           id: 'chatgpt',
           name: 'ChatGPT',
           description: 'Trợ lý AI đa năng từ OpenAI, giúp trả lời câu hỏi và hỗ trợ công việc hàng ngày',
           website: 'https://chat.openai.com',
-          logo: '💬'
+          rating: 5
         },
         {
           id: 'perplexity',
           name: 'Perplexity AI',
           description: 'Công cụ tìm kiếm AI thông minh, cung cấp câu trả lời chính xác với nguồn tin cậy',
           website: 'https://perplexity.ai',
-          logo: '🔍'
+          rating: 4
         }
       ]
     },
@@ -59,21 +94,21 @@ const AllTools = () => {
           name: 'Consensus',
           description: 'Tìm kiếm và tóm tắt nghiên cứu khoa học bằng AI, trích xuất thông tin từ papers',
           website: 'https://consensus.app',
-          logo: '📚'
+          rating: 4
         },
         {
           id: 'elicit',
           name: 'Elicit',
           description: 'Trợ lý nghiên cứu AI giúp tìm kiếm, tóm tắt và phân tích tài liệu học thuật',
           website: 'https://elicit.org',
-          logo: '🔬'
+          rating: 4
         },
         {
           id: 'semantic-scholar',
           name: 'Semantic Scholar',
           description: 'Công cụ tìm kiếm tài liệu khoa học với AI, từ Allen Institute',
           website: 'https://semanticscholar.org',
-          logo: '📖'
+          rating: 4
         }
       ]
     },
@@ -87,21 +122,21 @@ const AllTools = () => {
           name: 'Excel Formula Bot',
           description: 'Tạo công thức Excel phức tạp bằng ngôn ngữ tự nhiên, tiết kiệm thời gian làm việc',
           website: 'https://formulabot.com',
-          logo: '📊'
+          rating: 4
         },
         {
           id: 'airtable-ai',
           name: 'Airtable AI',
           description: 'Tính năng AI tích hợp trong Airtable giúp tự động hóa và phân tích dữ liệu',
           website: 'https://airtable.com/ai',
-          logo: '🗃️'
+          rating: 4
         },
         {
           id: 'rows',
           name: 'Rows',
           description: 'Bảng tính thông minh với tích hợp AI, kết nối APIs và tự động hóa workflows',
           website: 'https://rows.com',
-          logo: '📈'
+          rating: 4
         }
       ]
     },
@@ -115,21 +150,21 @@ const AllTools = () => {
           name: 'DeepL',
           description: 'Dịch thuật AI chất lượng cao, hỗ trợ nhiều ngôn ngữ với độ chính xác vượt trội',
           website: 'https://deepl.com',
-          logo: '🌐'
+          rating: 5
         },
         {
           id: 'reverso',
           name: 'Reverso Context',
           description: 'Dịch thuật với ngữ cảnh thực tế, học từ hàng triệu văn bản song ngữ',
           website: 'https://context.reverso.net',
-          logo: '🔄'
+          rating: 4
         },
         {
           id: 'linguee',
           name: 'Linguee',
           description: 'Từ điển và dịch thuật với ví dụ thực tế từ các tài liệu song ngữ',
           website: 'https://linguee.com',
-          logo: '📝'
+          rating: 4
         }
       ]
     },
@@ -143,21 +178,21 @@ const AllTools = () => {
           name: 'Gamma',
           description: 'Tạo slides và thuyết trình đẹp mắt bằng AI, chỉ cần mô tả nội dung',
           website: 'https://gamma.app',
-          logo: '🎨'
+          rating: 4
         },
         {
           id: 'tome',
           name: 'Tome',
           description: 'Công cụ storytelling AI tạo presentations tương tác và hấp dẫn',
           website: 'https://tome.app',
-          logo: '📱'
+          rating: 4
         },
         {
           id: 'beautiful-ai',
           name: 'Beautiful.AI',
           description: 'Tạo slides chuyên nghiệp với AI, tự động điều chỉnh thiết kế và bố cục',
           website: 'https://beautiful.ai',
-          logo: '✨'
+          rating: 4
         }
       ]
     }
@@ -255,34 +290,56 @@ const AllTools = () => {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                       {subcategory.tools.map(tool => (
-                        <Card key={tool.id} className="group hover:shadow-lg transition-all duration-300 border-border/50 bg-card/50 backdrop-blur-sm">
-                          <CardHeader className="space-y-3">
-                            <div className="flex items-center gap-3">
-                              <div className="text-2xl">{tool.logo}</div>
-                              <CardTitle className="text-lg text-card-foreground group-hover:text-primary transition-colors">
+                        <Card key={tool.id} className="group hover:shadow-lg transition-all duration-300 border-border/50 bg-card/50 backdrop-blur-sm aspect-[3/4] flex flex-col">
+                          <CardHeader className="flex-shrink-0 p-4">
+                            <div className="flex flex-col items-center text-center space-y-2">
+                              <div className="w-12 h-12 rounded-lg overflow-hidden bg-white/10 flex items-center justify-center">
+                                <img 
+                                  src={logoMap[tool.id as keyof typeof logoMap]} 
+                                  alt={`${tool.name} logo`}
+                                  className="w-10 h-10 object-contain"
+                                />
+                              </div>
+                              <CardTitle className="text-sm font-semibold text-card-foreground group-hover:text-primary transition-colors line-clamp-2">
                                 {tool.name}
                               </CardTitle>
                             </div>
                           </CardHeader>
                           
-                          <CardContent className="space-y-4">
-                            <CardDescription className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
-                              {tool.description}
-                            </CardDescription>
+                          <CardContent className="flex-grow flex flex-col justify-between p-4 pt-0">
+                            <div className="space-y-3">
+                              <CardDescription className="text-xs text-muted-foreground leading-relaxed line-clamp-3">
+                                {tool.description}
+                              </CardDescription>
+                              
+                              {/* Star Rating */}
+                              <div className="flex justify-center gap-1">
+                                {[...Array(5)].map((_, index) => (
+                                  <Star 
+                                    key={index}
+                                    className={`w-3 h-3 ${
+                                      index < tool.rating 
+                                        ? 'fill-yellow-400 text-yellow-400' 
+                                        : 'text-gray-300'
+                                    }`}
+                                  />
+                                ))}
+                              </div>
+                            </div>
                             
                             <a 
                               href={tool.website}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-block w-full"
+                              className="inline-block w-full mt-3"
                             >
                               <Button 
                                 size="sm" 
-                                className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300"
+                                className="w-full text-xs bg-gradient-primary hover:shadow-glow transition-all duration-300"
                               >
-                                <ExternalLink className="w-4 h-4 mr-2" />
+                                <ExternalLink className="w-3 h-3 mr-1" />
                                 Truy cập
                               </Button>
                             </a>
