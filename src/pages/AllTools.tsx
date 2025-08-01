@@ -46,6 +46,21 @@ const AllTools = () => {
             const IconComponent = Icons[category.icon as keyof typeof Icons] as LucideIcon;
             const isActive = selectedCategory === category.id;
             
+            // Special handling for productivity tools category
+            if (category.id === 'productivity') {
+              return (
+                <Link key={category.id} to="/productivity-tools">
+                  <Button
+                    variant={isActive ? "default" : "outline"}
+                    className="flex items-center gap-2"
+                  >
+                    <IconComponent className="w-4 h-4" />
+                    {category.name}
+                  </Button>
+                </Link>
+              );
+            }
+            
             return (
               <Button
                 key={category.id}
