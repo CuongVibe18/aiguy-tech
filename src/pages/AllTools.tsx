@@ -291,25 +291,25 @@ const AllTools = () => {
                     </div>
 
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                      {subcategory.tools.map(tool => (
-                         <Card key={tool.id} className="group hover:shadow-lg transition-all duration-300 border-border/50 bg-card/50 backdrop-blur-sm aspect-[4/5] flex flex-col">
-                           <CardHeader className="flex-shrink-0 p-3">
-                             <div className="flex flex-col items-center text-center space-y-2">
-                               <div className="w-10 h-10 rounded-lg overflow-hidden bg-white/10 flex items-center justify-center">
+                       {subcategory.tools.map(tool => (
+                         <Card key={tool.id} className="group hover:shadow-lg transition-all duration-300 border-border/50 bg-card/90 backdrop-blur-sm aspect-[6/5] flex flex-col">
+                           <CardHeader className="flex-shrink-0 p-2">
+                             <div className="flex flex-col items-center text-center space-y-1">
+                               <div className="w-8 h-8 rounded-lg overflow-hidden bg-white/10 flex items-center justify-center">
                                  <img 
                                    src={logoMap[tool.id as keyof typeof logoMap]} 
                                    alt={`${tool.name} logo`}
-                                   className="w-8 h-8 object-contain"
+                                   className="w-6 h-6 object-contain"
                                  />
                                </div>
-                               <CardTitle className="text-xs font-semibold text-card-foreground group-hover:text-primary transition-colors line-clamp-2">
+                               <CardTitle className="text-xs font-semibold text-card-foreground group-hover:text-primary transition-colors line-clamp-1">
                                  {tool.name}
                                </CardTitle>
                              </div>
                            </CardHeader>
                            
-                           <CardContent className="flex-grow flex flex-col justify-between p-3 pt-0">
-                             <div className="space-y-2">
+                           <CardContent className="flex-grow flex flex-col justify-between p-2 pt-0">
+                             <div className="space-y-1">
                                <CardDescription className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
                                  {tool.description}
                                </CardDescription>
@@ -319,7 +319,7 @@ const AllTools = () => {
                                  {[...Array(5)].map((_, index) => (
                                    <Star 
                                      key={index}
-                                     className={`w-3 h-3 ${
+                                     className={`w-2.5 h-2.5 ${
                                        index < tool.rating 
                                          ? 'fill-yellow-400 text-yellow-400' 
                                          : 'text-gray-300'
@@ -333,13 +333,13 @@ const AllTools = () => {
                                href={tool.website}
                                target="_blank"
                                rel="noopener noreferrer"
-                               className="inline-block w-full mt-2"
+                               className="inline-block w-full mt-1"
                              >
                                <Button 
                                  size="sm" 
-                                 className="w-full text-xs bg-gradient-primary hover:shadow-glow transition-all duration-300 py-1 h-7"
+                                 className="w-full text-xs bg-gradient-primary hover:shadow-glow transition-all duration-300 py-0.5 h-6"
                                >
-                                 <ExternalLink className="w-3 h-3 mr-1" />
+                                 <ExternalLink className="w-2.5 h-2.5 mr-1" />
                                  Truy cập
                                </Button>
                              </a>
